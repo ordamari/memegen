@@ -1,0 +1,250 @@
+/* base  */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    outline: none;
+}
+button{
+    cursor: pointer;
+}
+select{
+    cursor: pointer;
+}
+
+body {
+    margin: 0;
+}
+ul {
+    list-style-type: none;
+}
+
+a{
+    text-decoration: none;
+}
+
+form{
+    display: inline;
+}
+
+
+
+/* fonts  */
+@font-face{
+    font-family: Montserrat;
+    src: url(font\ familys/Montserrat-Regular.ttf);
+}
+
+/* nav  */
+
+.nav-container{
+    background-color: #ff7f00;
+    display: flex;
+    justify-content: space-between;
+}
+
+.nav-container img{
+    width: 133px;
+    height: 22px;
+    margin:24px 0px 20px 50px ;
+
+}
+.nav-container ul{
+    margin-left: 57px;
+
+}
+
+.nav-container li{
+    margin-top:19px;
+    display: inline-block;
+    margin-right: 12px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+.nav-container li:last-child{
+    padding-left: 16px;
+
+}
+
+.nav-container a:hover{
+    color: #040a2c;
+}
+
+.nav-container li:last-child{
+    margin-right: 57px;
+    border-left: 1px solid #040a2c;
+}
+
+
+.nav-container a{
+    width: 60px;
+    height: 15px;
+    color: #ffffff;
+    font-family: Montserrat;
+    font-size: 19px;
+    font-weight: 400;
+}
+
+/* gallery */
+.imgs-container{
+    padding: 25px;
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: repeat(auto-fill,minmax(160px,1fr));
+}
+
+.imgs-container img{
+    width: 100%;
+    cursor: pointer;
+}
+
+
+
+/* meme generator */
+
+.canvas-container{
+    margin-right: 30px;
+}
+
+.meme-generator{
+    padding: 30px 20px;
+    
+    background-color: #e3e3e3;
+    display: flex;
+    justify-content: space-between;
+}
+
+canvas {
+    display: block;
+    margin: 0 auto;
+    border: 1px solid black;
+}
+
+
+
+.controler-btns button{
+    margin: 10px;
+    width: 60px;
+    height: 60px;
+    font-size: 35px;
+    background-color: white;
+    border-radius: 12px;
+    border: none;
+}
+
+.text-input{
+    transform: translateY(-5px);
+    margin: 10px;
+    width: 300px;
+    height: 60px;
+    border-radius: 12px;
+    border: none;
+    font-size: 20px;
+    text-align: center;
+    background-color: #ffffff;
+}
+
+.controler-btns .hide-mark{
+    display: block;
+    width: 400px;
+    font-size: 25px;
+}
+
+.color-input{
+    transform: translateY(5px);
+    margin: 10px;
+    cursor: pointer;
+    width: 60px;
+    height: 60px;
+    background-color: white;
+    border: 10px solid white;
+    border-radius: 12px;
+}
+
+.controler-btns select{
+    width: 218px;
+    height: 60px;
+    border-radius: 12px;
+    background-color: #ffffff;
+    color: #000000;
+    font-family: Montserrat;
+    font-size: 20px;
+    font-weight: 400;
+    
+}
+
+.share-container{
+    padding-top: 3px ;
+    display: block;
+    text-align: center;
+    border-radius: 12px;
+    background-color: white;
+    width: 60px;
+    height:60px;
+    font-size: 50px;
+    text-align: center;
+}
+
+.share-container a{
+    color: #4267B2;
+}
+
+.dowloand-btn{
+    padding-top: 10px;
+    text-align: center;
+    color:black;
+    display: inline-block;
+    width: 60px;
+    height: 60px;
+    font-size: 35px;
+    background-color: white;
+    border-radius: 12px;
+    border: none;
+}
+
+
+
+
+/* footer */
+
+footer{
+    text-align: center;
+    background-color: #ff7f00;
+}
+
+footer img{
+    padding-top: 77px;
+}
+
+footer p{
+    color: #ffffff;
+    font-family: "Montserrat";
+    font-size: 19px;
+    font-weight: 400;
+    padding-bottom:73px ;
+}
+
+
+
+@media(max-width:950px){
+    .meme-generator{
+        flex-direction: column;
+    }
+}
+
+
+@media(max-width:950px){
+    .nav-container img{
+        width: 133px;
+        height: 22px;
+        margin:24px 0px 20px 10px ;
+    }
+
+    .nav-container li:last-child {
+        margin-right: 10px;
+    }
+
+    
+    
+}
