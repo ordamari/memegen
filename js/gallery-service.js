@@ -48,6 +48,7 @@ var gImgs=[
     {id:41, url:'imgs/41.jpg',keywords:['mans']},  
     {id:42, url:'imgs/42.jpg',keywords:['politics','mans']},  
     {id:43, url:'imgs/43.jpg',keywords:['cartoons']},  
+    {id:44, url:'imgs/44.jpg',keywords:['cartoons']},  
 ];
 
 function getImgs(){
@@ -81,9 +82,6 @@ function setFilter(filterKey){
 
 
 function renderCanvas(img) {
-    gCanvas.width = img.width;
-    gCanvas.height = img.height;
-    gCtx.drawImage(img, 0, 0, gCanvas.width, gCanvas.height);
 }
 
 function downloadImg(elLink) {
