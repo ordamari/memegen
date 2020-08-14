@@ -14,7 +14,7 @@
 
     <!-- navbar -->
     <div class="nav-container">
-        <img onclick="onOpenGallery()"  src="imgs/logo.png" alt="logo">
+        <img onclick="onOpenGallery()" src="imgs/logo.png" alt="logo">
         <i onclick="onNavOpen()" class="fas fa-bars full-screen-hide"></i>
         <ul>
             <li><a onclick="onOpenGallery()" href="#">Gallery</a></li>
@@ -46,12 +46,13 @@
         <!-- imgs -->
         <div class="imgs-container"></div>
     </div>
-    
+
     <!-- meme generator page -->
 
     <!-- modal -->
     <div hidden class="modal">
-        <p>use arrows to: <i class="fas fa-arrow-up"></i> <i class="fas fa-arrow-down"></i> <i class="fas fa-arrow-right"></i>  <i class="fas fa-arrow-left"></i></p>
+        <p>use arrows to: <i class="fas fa-arrow-up"></i> <i class="fas fa-arrow-down"></i> <i
+                class="fas fa-arrow-right"></i> <i class="fas fa-arrow-left"></i></p>
         <p>use TAB to: <i class="fas fa-arrows-alt-v"></i></p>
         <p>use ESC to: <i class="fas fa-trash"></i></p>
         <p>use ` to: <i class="fas fa-plus"></i></p>
@@ -60,56 +61,71 @@
         <button onclick="onToggleModal()">close</button>
     </div>
 
-    <div  class="meme-generator hide">
-        
-        <!-- meme canvas  -->
-        <div class="canvas-container">
-            <canvas onmouseup="onMouseChange()" onmousedown="onMouseChange()" onmousemove="onChangePos(event)"
-            onclick="onChooseLine(event)" id="meme" height="350px" width="350"></canvas>
+    <div class="canvas-page hide">
+
+        <div class="canvas-page-container">
+
+            <div class="meme-generator ">
+
+                <!-- meme canvas  -->
+                <div class="canvas-container">
+                    <canvas onmouseup="onMouseChange()" onmousedown="onMouseChange()" onmousemove="onChangePos(event)"
+                        onclick="onChooseLine(event)" id="meme" height="350px" width="350"></canvas>
+                </div>
+                <div class="controler-btns">
+
+
+                    <!-- text inputs -->
+                    <input onkeyup="onChangeLineText()" class="text-input" value="enter your text" type="text">
+
+                    <!-- color inputs -->
+                    <input onchange="onChangeTextColor(this.value)" type="color" class="color-input text-color"
+                        value="#000000">
+                    <input onchange="onChangeStrokeColor(this.value)" type="color" class="color-input stroke-color"
+                        value="#ffffff">
+
+                    <!-- control buttons -->
+                    <button onclick="onChangePosUp()" class="move-up"><i class="fas fa-arrow-up"></i></button>
+                    <button onclick="onChangePosDown()" class="move-down"><i class="fas fa-arrow-down"></i></button>
+                    <button onclick="onChangePosLeft()" class="move-left"><i class="fas fa-arrow-left"></i></button>
+                    <button onclick="onChangePosRight()" class="move-right"><i class="fas fa-arrow-right"></i></button>
+                    <button onclick="onChangeLine()" class="change-line"><i class="fas fa-arrows-alt-v"></i></button>
+                    <button onclick="onAddLine()" class="add-line"><i class="fas fa-plus"></i></button>
+                    <button onclick="onDeleteLine()" class="delete-this-line"><i class="fas fa-trash"></i></button>
+                    <button onclick="onIncreaseFontSize()" class="increase-text-size"><i
+                            class="fas fa-font">+</i></button>
+                    <button onclick="onDecreaseFontSize()" class="decrease-text-size"><i
+                            class="fas fa-font">-</i></button>
+                    <button onclick="OnSetTextAlignRight()" class="align-right"><i
+                            class="fas fa-align-left"></i></button>
+                    <button onclick="OnSetTextAlignCenter()" class="align-center"><i
+                            class="fas fa-align-justify"></i></button>
+                    <button onclick="OnSetTextAlignLeft()" class="align-left"><i
+                            class="fas fa-align-right"></i></button>
+                    <button onclick="onToggleModal()" class="keyboard-control">keyboard-control</button>
+
+                    <!-- font select  -->
+                    <select class="font-select" onchange="onSelecFont(this.value)" name="fonts" id="fonts">
+                        <option value="Impact">Impact</option>
+                        <option value="Montserrat">Montserrat</option>
+                        <option value="Ariel">Ariel</option>
+                    </select>
+
+                    <!-- dowloand and share control  -->
+                    <button onclick="onHideMark()" class="hide-mark">hide mark</button>
+                    <a class="dowloand-btn" onclick="onDownloadMeme(this)" class="dowloand" href="#" download="meme"><i
+                            class="fas fa-download"></i></a>
+                    <form action="" method="POST" enctype="multipart/form-data" onsubmit="uploadImg(this, event)">
+                        <input name="img" id="imgData" type="hidden" />
+                        <button class="btn" type="submit"><i class="fas fa-share-square"></i></button>
+                    </form>
+                    <div class=" share-container"></div>
+                </div>
+            </div>
+
         </div>
-        <div class="controler-btns">
-            
 
-            <!-- text inputs -->
-            <input onkeyup="onChangeLineText()" class="text-input" value="enter your text" type="text">
 
-            <!-- color inputs -->
-            <input onchange="onChangeTextColor(this.value)" type="color" class="color-input text-color" value="#000000">
-            <input onchange="onChangeStrokeColor(this.value)" type="color" class="color-input stroke-color"
-                value="#ffffff">
-
-            <!-- control buttons -->
-            <button onclick="onChangePosUp()" class="move-up"><i class="fas fa-arrow-up"></i></button>
-            <button onclick="onChangePosDown()" class="move-down"><i class="fas fa-arrow-down"></i></button>
-            <button onclick="onChangePosLeft()" class="move-left"><i class="fas fa-arrow-left"></i></button>
-            <button onclick="onChangePosRight()" class="move-right"><i class="fas fa-arrow-right"></i></button>
-            <button onclick="onChangeLine()" class="change-line"><i class="fas fa-arrows-alt-v"></i></button>
-            <button onclick="onAddLine()" class="add-line"><i class="fas fa-plus"></i></button>
-            <button onclick="onDeleteLine()" class="delete-this-line"><i class="fas fa-trash"></i></button>
-            <button onclick="onIncreaseFontSize()" class="increase-text-size"><i class="fas fa-font">+</i></button>
-            <button onclick="onDecreaseFontSize()" class="decrease-text-size"><i class="fas fa-font">-</i></button>
-            <button onclick="OnSetTextAlignRight()" class="align-right"><i class="fas fa-align-left"></i></button>
-            <button onclick="OnSetTextAlignCenter()" class="align-center"><i class="fas fa-align-justify"></i></button>
-            <button onclick="OnSetTextAlignLeft()" class="align-left"><i class="fas fa-align-right"></i></button>
-            <button onclick="onToggleModal()" class="keyboard-control">keyboard-control</button>
-
-            <!-- font select  -->
-            <select class="font-select" onchange="onSelecFont(this.value)" name="fonts" id="fonts">
-                <option value="Impact">Impact</option>
-                <option value="Montserrat">Montserrat</option>
-                <option value="Ariel">Ariel</option>
-            </select>
-
-            <!-- dowloand and share control  -->
-            <button onclick="onHideMark()" class="hide-mark">hide mark</button>
-            <a class="dowloand-btn" onclick="onDownloadMeme(this)" class="dowloand" href="#" download="meme"><i
-                    class="fas fa-download"></i></a>
-            <form action="" method="POST" enctype="multipart/form-data" onsubmit="uploadImg(this, event)">
-                <input name="img" id="imgData" type="hidden" />
-                <button class="btn" type="submit"><i class="fas fa-share-square"></i></button>
-            </form>
-            <div class=" share-container"></div>
-        </div>
     </div>
 
     <div class="about hide">

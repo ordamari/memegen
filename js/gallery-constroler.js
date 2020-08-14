@@ -36,7 +36,7 @@ function onFilter(filterKey) {
 
 function onOpenGallery() {
     document.querySelector('.gallery').hidden = false;
-    document.querySelector('.meme-generator').classList.add('hide');
+    document.querySelector('.canvas-page').classList.add('hide');
     document.querySelector('.about').classList.add('hide');
     onNavOpen();
 }
@@ -44,14 +44,14 @@ function onOpenGallery() {
 function onCelectedImg(elImg, imgId) {
     setMemeImg(imgId);
     document.querySelector('.gallery').hidden = true;
-    document.querySelector('.meme-generator').classList.remove('hide');
+    document.querySelector('.canvas-page').classList.remove('hide');
     renderImg();
     return elImg.src
 }
 
 function onOpenAbout() {
     document.querySelector('.gallery').hidden = true;
-    document.querySelector('.meme-generator').classList.add('hide');
+    document.querySelector('.canvas-page').classList.add('hide');
     document.querySelector('.about').classList.remove('hide');
     onNavOpen();
 
