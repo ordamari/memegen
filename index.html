@@ -72,11 +72,11 @@
                     <canvas onmouseup="onMouseChange()" onmousedown="onMouseChange()" onmousemove="onChangePos(event)"
                         onclick="onChooseLine(event)" id="meme" height="350px" width="350"></canvas>
                 </div>
+
                 <div class="controler-btns">
 
-
                     <!-- text inputs -->
-                    <input onkeyup="onChangeLineText()" class="text-input" value="enter your text" type="text">
+                    <input placeholder="Enter your text" onkeyup="onChangeLineText()" class="text-input" type="text">
 
                     <!-- color inputs -->
                     <input onchange="onChangeTextColor(this.value)" type="color" class="color-input text-color"
@@ -102,7 +102,8 @@
                             class="fas fa-align-justify"></i></button>
                     <button onclick="OnSetTextAlignLeft()" class="align-left"><i
                             class="fas fa-align-right"></i></button>
-                    <button onclick="onToggleModal()" class="keyboard-control">keyboard-control</button>
+                    <button onclick="onToggleModal()"
+                        class="keyboard-control smartphone-screen-hide">keyboard-control</button>
 
                     <!-- font select  -->
                     <select class="font-select" onchange="onSelecFont(this.value)" name="fonts" id="fonts">
@@ -122,24 +123,22 @@
                     <div class=" share-container"></div>
                 </div>
             </div>
-
         </div>
-
-
     </div>
 
+    <!-- about page  -->
     <div class="about hide">
         <img src="imgs/about.png" alt="About">
         <div class="about-txt">
-
             <h2>Hi,</h2>
             <p>My name is Or Damari and i am a fullstack developer.</p>
             <p>i built this generator when i finish to learn vanila js and css design,</p>
             <p>i will glad if you meet my other sites.</p>
             <p>enjoy with my website</p>
         </div>
-
     </div>
+
+    <!-- footer  -->
     <footer>
         <img src="imgs/logo.png" alt="logo">
         <p>all rights reserved 2020</p>

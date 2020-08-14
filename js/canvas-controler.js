@@ -1,6 +1,5 @@
 'use strict'
 
-
 var gCanvas = document.getElementById('meme');
 var gCtx = gCanvas.getContext('2d');
 
@@ -10,19 +9,18 @@ function renderImg() {
         gCtx.drawImage(img, 0, 0, gCanvas.width, gCanvas.height);
         gMeme.lines.forEach((line, idx) => {
             if (getSelectedLineIdx() === idx) {
-                gCtx.rect(0, line.pos.y, 5000, line.size+10); /// x, y, width, height
+                gCtx.rect(0, line.pos.y, 5000, line.size + 10); /// x, y, width, height
                 gCtx.fillStyle = 'yellow';
-                gCtx.fillRect(0, line.pos.y-line.size, 5000, line.size+10)
+                gCtx.fillRect(0, line.pos.y - line.size, 5000, line.size + 10)
             }
             drawText(line)
         })
     }
-
     const selectedimg = findImgById(gMeme.selectedImgId)
     img.src = selectedimg.url;
 }
 
-function onHideMark(){
+function onHideMark() {
     const img = new Image();
     img.onload = () => {
         gCtx.drawImage(img, 0, 0, gCanvas.width, gCanvas.height);
@@ -30,7 +28,6 @@ function onHideMark(){
             drawText(line)
         })
     }
-
     const selectedimg = findImgById(gMeme.selectedImgId)
     img.src = selectedimg.url;
 }
@@ -45,10 +42,10 @@ function drawText(line) {
     gCtx.strokeText(line.txt, line.pos.x, line.pos.y);
 }
 
-function onChooseLine(ev){
+function onChooseLine(ev) {
     ChooseLine(ev)
+    document.querySelector('.text-input').value = gMeme.lines[gMeme.selectedLineIdx].txt;
     renderImg();
-    
 }
 
 function onAddLine() {
@@ -67,12 +64,12 @@ function onChangePosDown() {
     renderImg();
 }
 
-function onChangePosLeft(){
+function onChangePosLeft() {
     setPosX(-5);
     renderImg();
 }
 
-function onChangePosRight(){
+function onChangePosRight() {
     setPosX(5);
     renderImg();
 }
@@ -108,7 +105,7 @@ function onSelecFont(font) {
 }
 
 function onDownloadMeme(elLink) {
-    
+
     var imgContent = gCanvas.toDataURL('image/png');
     elLink.href = imgContent
 }
@@ -143,63 +140,63 @@ function getCanvasWidth() {
     return gCanvas.width;
 }
 
-function onChangePos(ev){
-    if(gIsMouseDown){
+function onChangePos(ev) {
+    if (gIsMouseDown) {
         setPosX(ev.movementX)
         setPosY(ev.movementY)
     }
     renderImg();
 }
 
-function onMouseChange(){
-    gIsMouseDown=!gIsMouseDown;
+function onMouseChange() {
+    gIsMouseDown = !gIsMouseDown;
 }
 
-function onToggleModal(){
-    document.querySelector('.modal').hidden=!document.querySelector('.modal').hidden;
+function onToggleModal() {
+    document.querySelector('.modal').hidden = !document.querySelector('.modal').hidden;
 }
 
-function onControlByKey(ev){
-    if(document.querySelector('.meme-generator').classList.contains('hide')) return;
-    switch(ev.code) {
+function onControlByKey(ev) {
+    if (document.querySelector('.canvas-page').classList.contains('hide')) return;
+    switch (ev.code) {
         case 'ArrowUp':
             onChangePosUp();
-          break;
+            break;
         case 'ArrowDown':
             onChangePosDown();
-          break;
+            break;
         case 'ArrowRight':
             onChangePosRight();
-          break;
+            break;
         case 'ArrowLeft':
             onChangePosLeft();
-          break;
+            break;
         case 'Escape':
             onDeleteLine();
-          break;
+            break;
         case 'Tab':
             onChangeLine();
-          break;
+            break;
         case 'Backslash':
-          onAddLine();
-          break;
-          case 'Equal':
-          case 'NumpadAdd':
-          onIncreaseFontSize();
-          break;
+            onAddLine();
+            break;
+        case 'Equal':
+        case 'NumpadAdd':
+            onIncreaseFontSize();
+            break;
         case 'Minus':
         case 'NumpadSubtract':
-          onDecreaseFontSize();
-          break;
+            onDecreaseFontSize();
+            break;
         case 'Backquote':
-          onAddLine();
-          break;
+            onAddLine();
+            break;
         default:
-          break;
-      }
+            break;
+    }
 }
 
-function onNavOpen(){
+function onNavOpen() {
     document.querySelector('.nav-container ul').classList.toggle('hamburger-clicked');
     document.querySelector('.black-page').classList.toggle('zIndexPlay');
 }

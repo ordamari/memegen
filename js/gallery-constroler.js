@@ -54,8 +54,6 @@ function onOpenAbout() {
     document.querySelector('.canvas-page').classList.add('hide');
     document.querySelector('.about').classList.remove('hide');
     onNavOpen();
-
-
 }
 
 function renderSearch() {
@@ -76,18 +74,3 @@ function renderSearch() {
         }
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
