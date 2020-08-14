@@ -4,57 +4,125 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="css/font awesome/all.css">
+    <title>Memegen</title>
+    <link rel="stylesheet" href="css/font awesome/fontawesome-free-5.14.0-web/css/all.css">
     <link rel="stylesheet" href="css/main.css">
+    <link rel="icon" type="image/png" href="imgs/memegen-favicon.png">
 </head>
 
-<body onload="onInit()">
+<body onload="onInit()" onkeydown="onControlByKey(event)">
+
+    <!-- navbar -->
     <div class="nav-container">
-        <img src="imgs/logo.png" alt="logo">
+        <img onclick="onOpenGallery()"  src="imgs/logo.png" alt="logo">
+        <i onclick="onNavOpen()" class="fas fa-bars full-screen-hide"></i>
         <ul>
-            <li><a href="#">Gallery</a></li>
-            <li><a href="#">About</a></li>
+            <li><a onclick="onOpenGallery()" href="#">Gallery</a></li>
+            <li><a onclick="onOpenAbout()" href="#">About</a></li>
         </ul>
     </div>
+
+    <div onclick="onNavOpen()" class="black-page full-screen-hide zIndexPlay"></div>
+
+    <!-- gallery page  -->
     <div class="gallery">
+        <!-- search  -->
+        <input type="text" id="filterBy" onkeyup="renderSearch()" placeholder="Search for image..">
+        <ul hidden id="myKeywords">
+            <li><a onclick="onFilter('politics')" href="#">politics</a></li>
+            <li><a onclick="onFilter('animals')" href="#">animals</a></li>
+            <li><a onclick="onFilter('babys')" href="#">babys</a></li>
+            <li><a onclick="onFilter('mans')" href="#">mans</a></li>
+            <li><a onclick="onFilter('womans')" href="#">womans</a></li>
+            <li><a onclick="onFilter('cartoons')" href="#">cartoons</a></li>
+        </ul>
+
+        <!-- upload image -->
+        <input type="file" class="file-input btn custom-file-input" name="image" onchange="onImgInput(event)" />
+
+        <!-- filter  -->
+        <div class="filter"></div>
+
+        <!-- imgs -->
         <div class="imgs-container"></div>
     </div>
-    <div class="meme-generator" hidden>
+    
+    <!-- meme generator page -->
+
+    <!-- modal -->
+    <div hidden class="modal">
+        <p>use arrows to: <i class="fas fa-arrow-up"></i> <i class="fas fa-arrow-down"></i> <i class="fas fa-arrow-right"></i>  <i class="fas fa-arrow-left"></i></p>
+        <p>use TAB to: <i class="fas fa-arrows-alt-v"></i></p>
+        <p>use ESC to: <i class="fas fa-trash"></i></p>
+        <p>use ` to: <i class="fas fa-plus"></i></p>
+        <p>use + to: <i class="fas fa-font">+</i></p>
+        <p>use - to: <i class="fas fa-font">-</i></p>
+        <button onclick="onToggleModal()">close</button>
+    </div>
+
+    <div  class="meme-generator hide">
+        
+        <!-- meme canvas  -->
         <div class="canvas-container">
-            <canvas id="meme" height="350px" width="350"></canvas>
+            <canvas onmouseup="onMouseChange()" onmousedown="onMouseChange()" onmousemove="onChangePos(event)"
+            onclick="onChooseLine(event)" id="meme" height="350px" width="350"></canvas>
         </div>
         <div class="controler-btns">
             
-            <input onchange="onChangeLineText()" class="text-input" value="enter your text" type="text">
-            <input onchange="onChangeTextColor(this.value)" type="color" class="color-input text-color" value="white">
-            <input onchange="onChangeStrokeColor(this.value)" type="color" class="color-input stroke-color" value="black">
+
+            <!-- text inputs -->
+            <input onkeyup="onChangeLineText()" class="text-input" value="enter your text" type="text">
+
+            <!-- color inputs -->
+            <input onchange="onChangeTextColor(this.value)" type="color" class="color-input text-color" value="#000000">
+            <input onchange="onChangeStrokeColor(this.value)" type="color" class="color-input stroke-color"
+                value="#ffffff">
+
+            <!-- control buttons -->
             <button onclick="onChangePosUp()" class="move-up"><i class="fas fa-arrow-up"></i></button>
             <button onclick="onChangePosDown()" class="move-down"><i class="fas fa-arrow-down"></i></button>
+            <button onclick="onChangePosLeft()" class="move-left"><i class="fas fa-arrow-left"></i></button>
+            <button onclick="onChangePosRight()" class="move-right"><i class="fas fa-arrow-right"></i></button>
             <button onclick="onChangeLine()" class="change-line"><i class="fas fa-arrows-alt-v"></i></button>
             <button onclick="onAddLine()" class="add-line"><i class="fas fa-plus"></i></button>
             <button onclick="onDeleteLine()" class="delete-this-line"><i class="fas fa-trash"></i></button>
-            <button  onclick="onIncreaseFontSize()" class="increase-text-size"><i class="fas fa-font">+</i></button>
+            <button onclick="onIncreaseFontSize()" class="increase-text-size"><i class="fas fa-font">+</i></button>
             <button onclick="onDecreaseFontSize()" class="decrease-text-size"><i class="fas fa-font">-</i></button>
             <button onclick="OnSetTextAlignRight()" class="align-right"><i class="fas fa-align-left"></i></button>
             <button onclick="OnSetTextAlignCenter()" class="align-center"><i class="fas fa-align-justify"></i></button>
             <button onclick="OnSetTextAlignLeft()" class="align-left"><i class="fas fa-align-right"></i></button>
+            <button onclick="onToggleModal()" class="keyboard-control">keyboard-control</button>
+
+            <!-- font select  -->
             <select class="font-select" onchange="onSelecFont(this.value)" name="fonts" id="fonts">
                 <option value="Impact">Impact</option>
                 <option value="Montserrat">Montserrat</option>
                 <option value="Ariel">Ariel</option>
             </select>
-            <button onclick="onHideMark()" class="hide-mark">hide mark before dowloand or sharing</button>
+
+            <!-- dowloand and share control  -->
+            <button onclick="onHideMark()" class="hide-mark">hide mark</button>
             <a class="dowloand-btn" onclick="onDownloadMeme(this)" class="dowloand" href="#" download="meme"><i
                     class="fas fa-download"></i></a>
             <form action="" method="POST" enctype="multipart/form-data" onsubmit="uploadImg(this, event)">
                 <input name="img" id="imgData" type="hidden" />
                 <button class="btn" type="submit"><i class="fas fa-share-square"></i></button>
-                <div class="share-container"></div>
             </form>
-            
-            
+            <div class=" share-container"></div>
         </div>
+    </div>
+
+    <div class="about hide">
+        <img src="imgs/about.png" alt="About">
+        <div class="about-txt">
+
+            <h2>Hi,</h2>
+            <p>My name is Or Damari and i am a fullstack developer.</p>
+            <p>i built this generator when i finish to learn vanila js and css design,</p>
+            <p>i will glad if you meet my other sites.</p>
+            <p>enjoy with my website</p>
+        </div>
+
     </div>
     <footer>
         <img src="imgs/logo.png" alt="logo">

@@ -6,7 +6,8 @@ var gFont = 'Impact';
 var gfontSize = 40;
 var gTextAlign = 'center';
 var gYindex = 0;
-var gtxt = 'Enter your text'
+var gTxt = 'Enter your text'
+var gIsMouseDown=false;
 
 var gMeme = {
     selectedImgId: 0,
@@ -22,7 +23,7 @@ var gMeme = {
     }]
 }
 
-function createLine(txt = gtxt, size = gfontSize, color = gColorText, strokeColor = gColorStroke, align=gTextAlign,font='Impact') {
+function createLine(txt = gTxt, size = gfontSize, color = gColorText, strokeColor = gColorStroke, align=gTextAlign,font='Impact') {
     var line = {
         txt,
         size,
@@ -31,7 +32,7 @@ function createLine(txt = gtxt, size = gfontSize, color = gColorText, strokeColo
         strokeColor,
         font,
         pos: {
-            x: 225, y: gfontSize + 10
+            x: 175, y: gfontSize + 10
         }
     }
     return line;
@@ -50,8 +51,13 @@ function setPosY(num) {
     gMeme.lines[gMeme.selectedLineIdx].pos.y += num;
 }
 
+function setPosX(num){
+    gMeme.lines[gMeme.selectedLineIdx].pos.x += num;
+}
+
 function setFontSize(num) {
-    gMeme.lines[gMeme.selectedLineIdx].size += num;
+    var curSize=gMeme.lines[gMeme.selectedLineIdx].size
+    gMeme.lines[gMeme.selectedLineIdx].size= (curSize + num<=10)? 10: curSize+num
 }
 
 function setTextAlign(str) {
@@ -91,4 +97,12 @@ function deleteLine(){
 function getSelectedLineIdx(){
     return gMeme.selectedLineIdx
 }
+
+function ChooseLine(ev){
+    var y=ev.offsetY
+    gMeme.selectedLineIdx = gMeme.lines.findIndex(line=> {
+        return Math.abs(line.pos.y-y)<line.size+10;
+    }) 
+}
+
 

@@ -45,6 +45,12 @@ function drawText(line) {
     gCtx.strokeText(line.txt, line.pos.x, line.pos.y);
 }
 
+function onChooseLine(ev){
+    ChooseLine(ev)
+    renderImg();
+    
+}
+
 function onAddLine() {
     var line = createLine()
     setNewLine(line);
@@ -58,6 +64,16 @@ function onChangePosUp() {
 
 function onChangePosDown() {
     setPosY(5);
+    renderImg();
+}
+
+function onChangePosLeft(){
+    setPosX(-5);
+    renderImg();
+}
+
+function onChangePosRight(){
+    setPosX(5);
     renderImg();
 }
 
@@ -123,8 +139,67 @@ function onChangeStrokeColor(color) {
     renderImg();
 }
 
-
-
 function getCanvasWidth() {
     return gCanvas.width;
+}
+
+function onChangePos(ev){
+    if(gIsMouseDown){
+        setPosX(ev.movementX)
+        setPosY(ev.movementY)
+    }
+    renderImg();
+}
+
+function onMouseChange(){
+    gIsMouseDown=!gIsMouseDown;
+}
+
+function onToggleModal(){
+    document.querySelector('.modal').hidden=!document.querySelector('.modal').hidden;
+}
+
+function onControlByKey(ev){
+    if(document.querySelector('.meme-generator').classList.contains('hide')) return;
+    switch(ev.code) {
+        case 'ArrowUp':
+            onChangePosUp();
+          break;
+        case 'ArrowDown':
+            onChangePosDown();
+          break;
+        case 'ArrowRight':
+            onChangePosRight();
+          break;
+        case 'ArrowLeft':
+            onChangePosLeft();
+          break;
+        case 'Escape':
+            onDeleteLine();
+          break;
+        case 'Tab':
+            onChangeLine();
+          break;
+        case 'Backslash':
+          onAddLine();
+          break;
+          case 'Equal':
+          case 'NumpadAdd':
+          onIncreaseFontSize();
+          break;
+        case 'Minus':
+        case 'NumpadSubtract':
+          onDecreaseFontSize();
+          break;
+        case 'Backquote':
+          onAddLine();
+          break;
+        default:
+          break;
+      }
+}
+
+function onNavOpen(){
+    document.querySelector('.nav-container ul').classList.toggle('hamburger-clicked');
+    document.querySelector('.black-page').classList.toggle('zIndexPlay');
 }
