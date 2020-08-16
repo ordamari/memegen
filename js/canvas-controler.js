@@ -2,6 +2,8 @@
 
 var gCanvas = document.getElementById('meme');
 var gCtx = gCanvas.getContext('2d');
+var gLastTouchX
+var gLastTouchY
 
 function renderImg() {
     const img = new Image();
@@ -117,6 +119,7 @@ function onChangeLineText() {
 }
 
 function onChangeLine() {
+    document.querySelector('.text-input').focus();
     setLineIdx();
     renderImg();
 }
@@ -140,6 +143,29 @@ function getCanvasWidth() {
     return gCanvas.width;
 }
 
+function onStartTouch() {
+    gLastTouchX = null
+    gLastTouchY = null
+}
+
+function onChangePosTouch(ev) {
+    ev.preventDefault();
+    if (!gLastTouchX) {
+        gLastTouchX = ev.touches[0].clientX
+    }
+    else {
+        setPosX(Math.floor(ev.touches[0].clientX - gLastTouchX))
+    }
+    if (!gLastTouchY) {
+        gLastTouchY = ev.touches[0].clientY
+    } else {
+        setPosY(Math.floor(ev.touches[0].clientY - gLastTouchY))
+    }
+    gLastTouchX = ev.touches[0].clientX
+    gLastTouchY = ev.touches[0].clientY
+    renderImg();
+}
+
 function onChangePos(ev) {
     if (gIsMouseDown) {
         setPosX(ev.movementX)
@@ -157,39 +183,48 @@ function onToggleModal() {
 }
 
 function onControlByKey(ev) {
-    // event.preventDefault();
     if (document.querySelector('.canvas-page').classList.contains('hide')) return;
     switch (ev.code) {
         case 'ArrowUp':
+            event.preventDefault();
             onChangePosUp();
             break;
         case 'ArrowDown':
+            event.preventDefault();
             onChangePosDown();
             break;
         case 'ArrowRight':
+            event.preventDefault();
             onChangePosRight();
             break;
         case 'ArrowLeft':
+            event.preventDefault();
             onChangePosLeft();
             break;
         case 'Escape':
+            event.preventDefault();
             onDeleteLine();
             break;
         case 'Tab':
+            event.preventDefault();
             onChangeLine();
             break;
         case 'Backslash':
+            event.preventDefault();
             onAddLine();
             break;
         case 'Equal':
+            event.preventDefault();
         case 'NumpadAdd':
             onIncreaseFontSize();
             break;
         case 'Minus':
         case 'NumpadSubtract':
+            event.preventDefault();
             onDecreaseFontSize();
             break;
         case 'Backquote':
+            event.preventDefault();
             onAddLine();
             break;
         default:

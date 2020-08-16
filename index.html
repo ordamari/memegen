@@ -41,7 +41,8 @@
 
         <!-- upload image -->
         <label class="upload-btn" for="upload-file">Choose file</label>
-        <input hidden type="file" class="file-input btn custom-file-input" name="image" id="upload-file" onchange="onImgInput(event)" />
+        <input hidden type="file" class="file-input btn custom-file-input" name="image" id="upload-file"
+            onchange="onImgInput(event)" />
 
         <!-- <label for="text-color"></label>
         <input onchange="onChangeTextColor(this.value)" type="color" class="color-input text-color" value="#000000"
@@ -76,8 +77,8 @@
 
                 <!-- meme canvas  -->
                 <div class="canvas-container">
-                    <canvas onmouseup="onMouseChange()" onmousedown="onMouseChange()" onmousemove="onChangePos(event)"
-                        onclick="onChooseLine(event)" id="meme" height="350px" width="350"></canvas>
+                    <canvas ontouchstart="onStartTouch()"  ontouchmove="onChangePosTouch(event)" onmouseup="onMouseChange()" onmousedown="onMouseChange()" onmousemove="onChangePos(event)"
+                        onclick="onChooseLine(event) "  id="meme" height="350px" width="350"></canvas>
                 </div>
 
                 <div class="controler-btns">

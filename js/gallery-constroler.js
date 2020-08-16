@@ -46,6 +46,7 @@ function onCelectedImg(elImg, imgId) {
     document.querySelector('.gallery').hidden = true;
     document.querySelector('.canvas-page').classList.remove('hide');
     renderImg();
+    document.querySelector('.text-input').focus();
     return elImg.src
 }
 
