@@ -157,6 +157,7 @@ function onToggleModal() {
 }
 
 function onControlByKey(ev) {
+    // event.preventDefault();
     if (document.querySelector('.canvas-page').classList.contains('hide')) return;
     switch (ev.code) {
         case 'ArrowUp':

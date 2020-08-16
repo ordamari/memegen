@@ -81,11 +81,16 @@
                     <input placeholder="Enter your text" onkeyup="onChangeLineText()" class="text-input" type="text">
 
                     <!-- color inputs -->
-                    <input onchange="onChangeTextColor(this.value)" type="color" class="color-input text-color"
-                        value="#000000">
-                    <input onchange="onChangeStrokeColor(this.value)" type="color" class="color-input stroke-color"
-                        value="#ffffff">
 
+
+                    <label for="text-color"><img src="imgs/paint-board-and-brush.png" alt=""></label>
+                    <input onchange="onChangeTextColor(this.value)" type="color" class="color-input text-color"
+                        value="#000000" id="text-color" hidden>
+
+                    <label for="stroke-color"><img src="imgs/text stroke.png" alt=""></label>
+                    <input onchange="onChangeTextColor(this.value)" type="color" class="color-input text-color"
+                        value="#000000" id="stroke-color" hidden>
+                
                     <!-- control buttons -->
                     <button onclick="onChangePosUp()" class="move-up"><i class="fas fa-arrow-up"></i></button>
                     <button onclick="onChangePosDown()" class="move-down"><i class="fas fa-arrow-down"></i></button>

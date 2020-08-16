@@ -50,7 +50,7 @@ form{
     background-color: rgba(0, 0, 0, 0.603);
 }
 
-.full-screen-hide{
+.full-screen-hide.fas.fa-bars{
     display: none;
 }
 
@@ -223,6 +223,18 @@ form{
     border-radius: 4px;
 }
 
+label img{
+    width: 60px;
+    background-color: #fff;
+    border-radius: 12px;
+    padding: 10px;
+    cursor: pointer;
+}
+
+label img:hover{
+    background-color: #ff7f00;
+}
+
 .canvas-container{
     margin-right: 30px;
     display: flex;
@@ -378,9 +390,7 @@ footer p{
     .about p{
         padding-bottom: 5px;
     }  
-}
 
-@media(max-width:900px){
     .meme-generator{
         grid-template-rows: repeat(2,1fr);
         grid-template-columns: 1fr;
@@ -392,6 +402,19 @@ footer p{
         
     }
 }
+
+/* @media(max-width:900px){
+    .meme-generator{
+        grid-template-rows: repeat(2,1fr);
+        grid-template-columns: 1fr;
+        grid-gap: 20px;
+    }
+
+    .canvas-container {
+        margin-right: 0;
+        
+    }
+} */
 
 @media(max-width:500px){
     .nav-container img{
@@ -449,7 +472,7 @@ footer p{
         padding-top: 65px;
     }
 
-    .full-screen-hide{
+    .full-screen-hide.fas.fa-bars{
         display: inline-block;
     }
 
@@ -471,3 +494,6 @@ footer p{
     }
     
 }
+
+
+
