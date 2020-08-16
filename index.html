@@ -40,7 +40,12 @@
         </ul>
 
         <!-- upload image -->
-        <input type="file" class="file-input btn custom-file-input" name="image" onchange="onImgInput(event)" />
+        <label class="upload-btn" for="upload-file">Choose file</label>
+        <input hidden type="file" class="file-input btn custom-file-input" name="image" id="upload-file" onchange="onImgInput(event)" />
+
+        <!-- <label for="text-color"></label>
+        <input onchange="onChangeTextColor(this.value)" type="color" class="color-input text-color" value="#000000"
+            id="text-color"> -->
 
         <!-- filter  -->
         <div class="filter"></div>
@@ -81,16 +86,15 @@
                     <input placeholder="Enter your text" onkeyup="onChangeLineText()" class="text-input" type="text">
 
                     <!-- color inputs -->
-
-
-                    <label for="text-color"><img src="imgs/paint-board-and-brush.png" alt=""></label>
+                    <label class="text-color-lebel" for="text-color"><img src="imgs/paint-board-and-brush.png"
+                            alt=""></label>
                     <input onchange="onChangeTextColor(this.value)" type="color" class="color-input text-color"
-                        value="#000000" id="text-color" hidden>
+                        value="#000000" id="text-color">
 
-                    <label for="stroke-color"><img src="imgs/text stroke.png" alt=""></label>
-                    <input onchange="onChangeTextColor(this.value)" type="color" class="color-input text-color"
-                        value="#000000" id="stroke-color" hidden>
-                
+                    <label class="stroke-color-lebel" for="stroke-color"><img src="imgs/text stroke.png" alt=""></label>
+                    <input onchange="onChangeStrokeColor(this.value)" type="color" class="color-input stroke-color "
+                        value="#000000" id="stroke-color">
+
                     <!-- control buttons -->
                     <button onclick="onChangePosUp()" class="move-up"><i class="fas fa-arrow-up"></i></button>
                     <button onclick="onChangePosDown()" class="move-down"><i class="fas fa-arrow-down"></i></button>
@@ -109,8 +113,8 @@
                             class="fas fa-align-justify"></i></button>
                     <button onclick="OnSetTextAlignLeft()" class="align-left"><i
                             class="fas fa-align-right"></i></button>
-                    <button onclick="onToggleModal()"
-                        class="keyboard-control smartphone-screen-hide">keyboard-control</button>
+                    <button onclick="onToggleModal()" class="keyboard-control smartphone-screen-hide"><i
+                            class="fas fa-keyboard"></i> controls</button>
 
                     <!-- font select  -->
                     <select class="font-select" onchange="onSelecFont(this.value)" name="fonts" id="fonts">

@@ -143,6 +143,21 @@ form{
     position: absolute;
 }
 
+.upload-btn{
+    font-size: 1rem;
+    background-color: #ff7f00;
+    padding: 10px;
+    font-family: Montserrat;
+    color: #fff;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background-color 0.5s;
+}
+
+.upload-btn:hover{
+    background-color: #da7612;
+}
+
 
 
 #myKeywords li{
@@ -291,6 +306,7 @@ canvas {
 .controler-btns .keyboard-control{
     width: 340px;
     grid-area: 6/1/7/5;
+    font-size: 25px;
 }
 
 .controler-btns .hide-mark{
@@ -300,6 +316,24 @@ canvas {
     grid-area: 5/4/6/6;
 }
 
+.text-color{
+    grid-area: 1/4/2/5;
+}
+
+
+.text-color-lebel{
+    grid-area: 1/4/2/5;
+    z-index: 1;
+}
+
+.stroke-color{
+    grid-area: 1/5/2/6;
+}
+.stroke-color-lebel{
+    grid-area: 1/5/2/6;
+    z-index: 1;
+}
+  
 .color-input{
     cursor: pointer;
     width: 60px;
@@ -307,6 +341,7 @@ canvas {
     background-color: white;
     border: 10px solid white;
     border-radius: 12px;
+    
 }
 
 .move-up{
