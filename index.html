@@ -5,7 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Memegen</title>
-    <link rel="stylesheet" href="css/font awesome/fontawesome-free-5.14.0-web/css/all.css">
+    <!-- <link rel="stylesheet" href="css/font awesome/fontawesome-free-5.14.0-web/css/all.css"> -->
+    <!-- <link rel="stylesheet" href="css/font-awesome/fontawesome-free-5.14.0-web/css/all.css"> -->
+    <link rel="stylesheet" href="css/font awesome/fontawesome-free-5.14.0-web/css/all.min.css">
     <link rel="stylesheet" href="css/main.css">
     <link rel="icon" type="image/png" href="imgs/memegen-favicon.png">
 </head>
@@ -29,7 +31,7 @@
         <!-- search  -->
         <input type="text" id="filterBy" onkeyup="renderSearch()" placeholder="Search for image..">
         <ul hidden id="myKeywords">
-            <li><a onclick="onFilter('politics')" href="#">politics</a></li>
+            <li><a onclick="onFilter(this.innerText)" href="#">politics</a></li>
             <li><a onclick="onFilter('animals')" href="#">animals</a></li>
             <li><a onclick="onFilter('babys')" href="#">babys</a></li>
             <li><a onclick="onFilter('mans')" href="#">mans</a></li>

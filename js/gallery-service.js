@@ -71,8 +71,8 @@ function setFilter(filterKey) {
     gKeywords[filterKey] += 3;
 }
 
-function renderCanvas(img) {
-}
+// function renderCanvas() {
+// }
 
 function downloadImg(elLink) {
     var imgContent = gCanvas.toDataURL('image/jpeg');
@@ -80,7 +80,7 @@ function downloadImg(elLink) {
 }
 
 function onImgInput(ev) {
-    loadImageFromInput(ev, renderCanvas)
+    loadImageFromInput(ev, ()=>{})
 }
 
 function loadImageFromInput(ev, onImageReady) {

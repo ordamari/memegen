@@ -5,18 +5,16 @@
     padding: 0;
     outline: none;
 }
-
+body {
+    /* margin: 0; */
+    background-color: #fff;
+}
 button{
     cursor: pointer;
 }
 
 select{
     cursor: pointer;
-}
-
-body {
-    margin: 0;
-    background-color: #fff;
 }
 
 ul {
@@ -29,6 +27,12 @@ a{
 
 form{
     display: inline;
+}
+
+/* fonts  */
+@font-face{
+    font-family: Montserrat;
+    src: url(font-familys/Montserrat-Regular.ttf);
 }
 
 .hide{
@@ -51,11 +55,7 @@ form{
 }
 
 
-/* fonts  */
-@font-face{
-    font-family: Montserrat;
-    src: url(font\ familys/Montserrat-Regular.ttf);
-}
+
 
 
 /* nav  */
@@ -139,14 +139,11 @@ form{
     width: 200px;
 }
 
-#myKeywords li a:hover:not(.header) {
-   
-    background-color: #eee;
-}
-
 #myKeywords{
     position: absolute;
 }
+
+
 
 #myKeywords li{
     margin-left: 12px;
@@ -162,6 +159,10 @@ form{
     display: inline-block;
     width: 200px;
 }
+#myKeywords li a:hover:not(.header) {
+    background-color: #eee;
+}
+
 
 .imgs-container{
     padding: 25px;
